@@ -1,0 +1,29 @@
+---
+
+- name: Get device data Via API
+  hosts: 
+    - localhost
+  gather_facts: yes
+  connection: network_cli
+  vars:
+    _netbox_url: "http://192.168.1.192:8000"
+    _api_token: "0123456789abcdef0123456789abcdef01234567"
+    _default_mac: "00:00:00:00:00:00"
+    _site_name: Home
+    _device: R6
+
+  tasks:
+
+  - name: Find device in Netbox
+    local_action:
+      module: uri
+      url: "{{ _netbox_url }}/api/dcim/devices?name={{ _device }}"
+      method: GET
+      headers:
+        Authorization: "Token {{ _api_token }}"
+      status_code: 200
+      validate_certs: no
+    register: _output
+  
+  - debug:
+      var: _output
