@@ -5,4 +5,4 @@ This repository focuses on some of the capabilities that make NetBox your networ
 
 Playbooks should be ran in the following order, they can be combined into a single play or multiple roles but have been seperated for brevity.
 
-netbox-create-site.yml
+1. netbox-create-site.yml
