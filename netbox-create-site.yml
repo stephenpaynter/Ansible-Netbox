@@ -1,0 +1,22 @@
+---
+
+- name: PARSE DATA FROM NETWORK DEVICES AND INSERT TO NETBOX
+  hosts: 
+    - localhost
+  gather_facts: yes
+  connection: network_cli
+  vars:
+    _netbox_url: "http://192.168.1.192:8000"
+    _api_token: "0123456789abcdef0123456789abcdef01234567"
+    _site: Home
+
+  tasks:
+
+    - name: Create site within Netbox with only required information
+      netbox.netbox.netbox_site:
+        netbox_url: "{{ _netbox_url }}"
+        netbox_token: "{{ _api_token }}"
+        data:
+          name: "{{ _site }}"
+        state: present
+     
