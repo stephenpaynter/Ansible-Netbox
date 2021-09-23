@@ -1,6 +1,6 @@
 ---
 
-- name: PARSE DATA FROM NETWORK DEVICES AND INSERT TO NETBOX
+- name: Standup Site Within netbox
   hosts: 
     - localhost
   gather_facts: yes
